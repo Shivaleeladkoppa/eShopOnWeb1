@@ -8,7 +8,7 @@ env:
   RESOURCE-GROUP: rg-eshoonweb-GitHub
   LOCATION: westeurope
   TEMPLATE-FILE: infra/webapp.bicep
-  SUBSCRIPTION-ID: YOUR-SUBS-ID
+  SUBSCRIPTION-ID: d0e345f3-a7da-473c-a2ab-ab90e14c5a92
   WEBAPP-NAME: web-app-GitHub
 
 
