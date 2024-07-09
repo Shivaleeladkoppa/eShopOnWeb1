@@ -87,7 +87,7 @@ jobs:
         subscriptionId: ${{ env.d0e345f3-a7da-473c-a2ab-ab90e14c5a92 }}
         resourceGroupName: ${{ env.rg-eshoonweb-GitHub }}
         template: bicep-template/webapp.bicep
-        parameters: 'webAppName=${{ env.web-app-GitHub }} location=${{ env.westeurope }}'
+        parameters: 'webAppName=${{ env.web-app-GitHub }} location=${{ env.LOCATION }}'
         failOnStdErr: false   
     
     # Publish website to Azure App Service (WebApp)
