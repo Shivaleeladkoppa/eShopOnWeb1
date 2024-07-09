@@ -3,13 +3,14 @@ name: eShopOnWeb Build and Test
 
 on: [push, workflow_dispatch]
 
-Environment variables https://docs.github.com/en/actions/learn-github-actions/environment-variables
+#Environment variables https://docs.github.com/en/actions/learn-github-actions/environment-variables
 env:
   RESOURCE-GROUP: rg-eshoonweb-GitHub
   LOCATION: westeurope
   TEMPLATE-FILE: infra/webapp.bicep
   SUBSCRIPTION-ID: d0e345f3-a7da-473c-a2ab-ab90e14c5a92
-  WEBAPP-NAME: "web-app-GitHub"
+  WEBAPP-NAME: 'web-app-GitHub'
+  
 
 
 jobs:
@@ -81,10 +82,10 @@ jobs:
     - name: deploy
       uses: azure/arm-deploy@v2
       with:
-        subscriptionId: ${{ env.SUBSCRIPTION-ID }}
-        resourceGroupName: ${{ env.RESOURCE-GROUP }}
+        subscriptionId: ${{ env.d0e345f3-a7da-473c-a2ab-ab90e14c5a92 }}
+        resourceGroupName: ${{ env.rg-eshoonweb-GitHub }}
         template: bicep-template/webapp.bicep
-        parameters: 'webAppName=${{ env.WEBAPP-NAME }} location=${{ env.LOCATION }}'
+        parameters: 'webAppName=${{ env.web-app-GitHub }} location=${{ env.LOCATION }}'
         failOnStdErr: false   
     
     # Publish website to Azure App Service (WebApp)
@@ -94,7 +95,7 @@ jobs:
       uses: Azure/webapps-deploy@v3
       with:
         type: ZIP
-        app-name: ${{ env.WEBAPP-NAME  }}
+        app-name: ${{ env.web-app-GitHub  }}
         package: .net-app/app.zip
 
     # Publish website to Azure App Service using CLI (WebApp)
@@ -102,4 +103,4 @@ jobs:
       uses: Azure/cli@v2
       with:
         inlineScript: |
-             az webapp deploy --name ${{ env.WEBAPP-NAME }} --resource-group ${{ env.RESOURCE-GROUP }} --src-path .net-app/app.zip --type zip
+             az webapp deploy --name ${{ env.web-app-GitHub }} --resource-group ${{ env.rg-eshoonweb-GitHub }} --src-path .net-app/app.zip --type zip
