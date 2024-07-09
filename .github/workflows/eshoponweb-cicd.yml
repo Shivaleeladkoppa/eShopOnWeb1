@@ -1,4 +1,4 @@
-name: eShopOnWeb Build and Test
+name: eShopOnWeb Build and Test1
 
 
 on: [push, workflow_dispatch]
